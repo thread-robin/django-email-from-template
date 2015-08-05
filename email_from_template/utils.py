@@ -1,14 +1,14 @@
-from django.utils.functional import memoize
+from django.utils.lru_cache import lru_cache
 
 from . import app_settings
 
+@lru_cache
 def get_render_method():
     return from_dotted_path(app_settings.EMAIL_RENDER_METHOD)
-get_render_method = memoize(get_render_method, {}, 0)
 
+@lru_cache
 def get_context_processors():
     return [from_dotted_path(x) for x in app_settings.EMAIL_CONTEXT_PROCESSORS]
-get_context_processors = memoize(get_context_processors, {}, 0)
 
 def from_dotted_path(fullpath):
     """
