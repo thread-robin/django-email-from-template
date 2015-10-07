@@ -5,7 +5,7 @@ from setuptools import setup, find_packages
 setup(
     name='django-email-from-template',
     description="Send emails generated entirely from Django templates.",
-    version='0.1',
+    version='1',
     url='https://chris-lamb.co.uk/projects/django-email-from-template',
 
     author="Chris Lamb",
