@@ -188,6 +188,7 @@ File a bug
 from django.conf import settings
 from django.template import Context
 from django.core.mail import get_connection
+from django.core.exceptions import ImproperlyConfigured
 from django.core.mail.message import EmailMultiAlternatives
 
 from .utils import get_render_method, get_context_processors
@@ -218,6 +219,14 @@ def send_mail(recipient_list, template, context=None, from_email=None, send_mail
         Did you know that a = {{ a }} ?
         {% endblock %}
     """
+
+    # Explicitly check that we have been installed as an app, otherwise we get
+    # a confusing traceback that `template` does not exist, rather than
+    # `email_from_template/component.email`.
+    if 'email_from_template' not in settings.INSTALLED_APPS:
+        raise ImproperlyConfigured(
+            "'email_from_template' missing from INSTALLED_APPS"
+        )
 
     context = Context(context)
     for fn in get_context_processors():
