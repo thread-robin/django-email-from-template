@@ -16,4 +16,8 @@ setup(
     package_data={'': [
         'templates/*/*',
     ]},
+
+    install_requires=(
+        'Django>=1.8',
+    ),
 )
