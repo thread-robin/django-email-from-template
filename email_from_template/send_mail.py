@@ -249,7 +249,7 @@ def send_mail(recipient_list, template, context=None, from_email=None, send_mail
 
         return txt
 
-    connection = kwargs.get('connection', get_connection(
+    kwargs.setdefault('connection', get_connection(
         username=kwargs.get('auth_user', None),
         password=kwargs.get('auth_password', None),
         fail_silently=kwargs.get('fail_silently', False),
