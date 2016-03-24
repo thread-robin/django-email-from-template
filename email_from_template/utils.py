@@ -1,14 +1,14 @@
 from django.utils import lru_cache
 
-from . import app_settings
+from .app_settings import app_settings
 
 @lru_cache.lru_cache()
 def get_render_method():
-    return from_dotted_path(app_settings.EMAIL_RENDER_METHOD)
+    return from_dotted_path(app_settings.RENDER_METHOD)
 
 @lru_cache.lru_cache()
 def get_context_processors():
-    return [from_dotted_path(x) for x in app_settings.EMAIL_CONTEXT_PROCESSORS]
+    return [from_dotted_path(x) for x in app_settings.CONTEXT_PROCESSORS]
 
 def from_dotted_path(fullpath):
     """
