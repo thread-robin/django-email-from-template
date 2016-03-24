@@ -235,13 +235,17 @@ def send_mail(recipient_list, template, context=None, from_email=None, send_mail
     render_fn = get_render_method()
 
     def render(component, fail_silently=False):
-        txt = render_fn(template, {
+        context.push({
             'email_from_template': 'email_from_template/%s.email' % component,
-        }, context).strip()
+        })
+
+        txt = render_fn(template, context.flatten()).strip()
 
         if not fail_silently:
             assert txt, "Refusing to send mail with empty %s - did you forget to" \
                 " add a {%% block %s %%} to %s?" % (component, component, template)
+
+        context.pop()
 
         return txt
 
