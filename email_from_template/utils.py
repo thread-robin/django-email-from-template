@@ -1,15 +1,3 @@
-from django.utils import lru_cache
-
-from .app_settings import app_settings
-
-@lru_cache.lru_cache()
-def get_render_method():
-    return from_dotted_path(app_settings.RENDER_METHOD)
-
-@lru_cache.lru_cache()
-def get_context_processors():
-    return [from_dotted_path(x) for x in app_settings.CONTEXT_PROCESSORS]
-
 def from_dotted_path(fullpath):
     """
     Returns the specified attribute of a module, specified by a string.

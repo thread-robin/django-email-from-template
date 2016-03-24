@@ -191,7 +191,8 @@ from django.core.mail import get_connection
 from django.core.exceptions import ImproperlyConfigured
 from django.core.mail.message import EmailMultiAlternatives
 
-from .utils import get_render_method, get_context_processors
+from .utils import from_dotted_path
+from .app_settings import app_settings
 
 def send_mail(recipient_list, template, context=None, from_email=None, send_mail=True, *args, **kwargs):
     """
@@ -229,10 +230,10 @@ def send_mail(recipient_list, template, context=None, from_email=None, send_mail
         )
 
     context = Context(context)
-    for fn in get_context_processors():
+    for fn in [from_dotted_path(x) for x in app_settings.CONTEXT_PROCESSORS]:
         context.update(fn())
 
-    render_fn = get_render_method()
+    render_fn = from_dotted_path(app_settings.RENDER_METHOD)
 
     def render(component, fail_silently=False):
         context.push({
