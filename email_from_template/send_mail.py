@@ -48,7 +48,7 @@ filters. First we define our template::
 
     Check out what they wrote here:
 
-      {{ site.url }}{% url profile:view user.username %}
+      {{ settings.SITE_URL }}{% url profile:view user.username %}
     {% endblock %}
 
 We then simply call our template-aware version of ``send_mail`` with the
