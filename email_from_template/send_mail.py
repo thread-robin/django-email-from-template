@@ -9,7 +9,7 @@ avoid presentation layer violations. It has the following features:
  * Context processor system
  * Support for non-Django template rendering systems
 
-Whilst Django  provides a comprehensive mail framework that simplifies the
+Whilst Django provides a comprehensive mail framework that simplifies the
 sending mechanics of email, the typical use of it is often ugly and results in
 unnecessary and complicated string formatting inside views::
 
