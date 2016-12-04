@@ -17,7 +17,7 @@ unnecessary and complicated string formatting inside views::
     from django.core.urlresolvers import reverse
     from django.contrib.sites.models import Site
 
-    # Shouldn't be in views.py
+    # XXX: Bad! Shouldn't be in views.py
     send_mail(
         'Hi %s, %d %s written on your wall' % (
             user.username,
