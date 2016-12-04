@@ -74,6 +74,17 @@ within a "html" block::
     </a>
     {% endblock %}
 
+Installation
+------------
+
+Add ``email_from_template`` to your ``INSTALLED_APPS``::
+
+    INSTALLED_APPS = (
+        ...
+        'email_from_template',
+        ...
+    )
+
 Context processors
 ------------------
 
@@ -163,17 +174,6 @@ Default: ``django.template.loader.render_to_string``
 Method to use to actually render templates. If you are using the
 `Coffin <github.com/cdleary/coffin>`_ Jinja2 adaptor for Django,
 you should set this ``coffin.template.loader.render_to_string``.
-
-Installation
-------------
-
-Add ``email_from_template`` to your ``INSTALLED_APPS``::
-
-    INSTALLED_APPS = (
-        ...
-        'email_from_template',
-        ...
-    )
 
 Links
 -----
