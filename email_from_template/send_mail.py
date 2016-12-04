@@ -59,7 +59,7 @@ appropriate context::
     send_mail([user.email], 'path/to/my_email.email', {
         'user': user,
         'num_posts': num_posts,
-    }, 'from@email.com')
+    })
 
 Now your views are not cluttered with unnecessary presentation logic.
 
