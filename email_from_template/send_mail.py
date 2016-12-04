@@ -69,8 +69,8 @@ within a "html" block::
     {% block html %}
     <p>Hi <strong>{{ user.username }}</strong></p>
     <p>Check out what they wrote here:</p>
-    <a href="{{ site.url }}{% url profile:view user.username %}">
-        {{ site.url }}{% url profile:view user.username %}
+    <a href="{{ setings.SITE_URL }}{% url profile:view user.username %}">
+        {{ settings.SITE_URL }}{% url profile:view user.username %}
     </a>
     {% endblock %}
 
