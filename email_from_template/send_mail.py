@@ -11,7 +11,7 @@ avoid presentation layer violations. It has the following features:
 
 Whilst Django provides a comprehensive mail framework that simplifies the
 sending mechanics of email, the typical use of it is often ugly and results in
-unnecessary and complicated string formatting inside views::
+unnecessary and complicated string formatting inside views or forms::
 
     from django.core.mail import send_mail
     from django.core.urlresolvers import reverse
@@ -61,7 +61,7 @@ appropriate context::
         'num_posts': num_posts,
     })
 
-Now your views are not cluttered with unnecessary presentation logic.
+Now your views or forms are not cluttered with unnecessary presentation logic.
 
 For HTML-enabled mail readers, we can optionally include suitable content
 within a "html" block::
