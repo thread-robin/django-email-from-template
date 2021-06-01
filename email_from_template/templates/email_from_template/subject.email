@@ -1,1 +1,1 @@
-{% block subject %}{% endblock %}
+{% autoescape off %}{% block subject %}{% endblock %}{% endautoescape %}
